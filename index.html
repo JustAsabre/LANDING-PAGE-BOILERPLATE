@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Landing Page Boilerplate</title>
+    <meta name="description" content="A secure, modern landing page boilerplate built with React + Tailwind." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <noscript>Enable JavaScript to run this app.</noscript>
+    <!-- Hidden Netlify form for build-time detection -->
+    <form name="lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="lead" />
+      <p class="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+      <p><input name="name" /></p>
+      <p><input name="email" type="email" /></p>
+      <p><textarea name="message"></textarea></p>
+    </form>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+  </html>

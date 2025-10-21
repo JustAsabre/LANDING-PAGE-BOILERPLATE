@@ -1,0 +1,34 @@
+# Netlify configuration with security headers
+
+[[headers]]
+for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "no-referrer-when-downgrade"
+  Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+  # Basic CSP compatible with GA and self-hosted assets; adjust per need
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'none'; base-uri 'self';"
+
+[[redirects]]
+  from = "http://*/*"
+  to = "https://:splat"
+  status = 301
+  force = true
+# Netlify configuration with security headers
+
+[[headers]]
+for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "no-referrer-when-downgrade"
+  Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+  # Basic CSP compatible with GA and self-hosted assets; adjust per need
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'none'; base-uri 'self';"
+
+[[redirects]]
+  from = "http://*/*"
+  to = "https://:splat"
+  status = 301
+  force = true
