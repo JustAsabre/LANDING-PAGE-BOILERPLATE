@@ -1,5 +1,7 @@
 # LANDING-PAGE-BOILERPLATE
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustAsabre/LANDING-PAGE-BOILERPLATE)
+
 A secure, modern landing page boilerplate using React, Vite, TypeScript, and Tailwind CSS. Includes a hero, three benefit sections, and a CTA form that works with Netlify Forms or Formspree. GA4 placeholder included. Hardened with CSP and security headers for Netlify and Vercel.
 
 ## Features
@@ -92,6 +94,17 @@ public/                 # Static assets (favicon, robots.txt)
 	- Functions directory: `netlify/functions`
 4. Add environment variables in Netlify UI for any secrets or public vars
 5. Deploy — Netlify Forms will work automatically; check Forms tab for submissions
+
+Troubleshooting Netlify builds
+- Error: “Failed retrieving extensions ... fetch failed” or “Failed to parse configuration”
+  - This is often transient or related to account auth. Try:
+    - Re-run the deploy
+    - Disconnect and reconnect the GitHub repo in Netlify
+    - Ensure you’re logged in and your Netlify account has access to the repo
+    - In Site settings → Build & deploy: confirm Build command (`npm run build`), Publish directory (`dist`), Functions (`netlify/functions`)
+    - Set Node version to 18 (Site settings → Environment variables or use the provided netlify.toml)
+    - Clear build cache and retry
+  - If it persists, open a Netlify support ticket with the full log snippet
 
 ### Deploy to Vercel
 1. Import the repo into Vercel
