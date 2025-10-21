@@ -105,6 +105,9 @@ Troubleshooting Netlify builds
     - Set Node version to 18 (Site settings → Environment variables or use the provided netlify.toml)
     - Clear build cache and retry
   - If it persists, open a Netlify support ticket with the full log snippet
+- Error: `sh: 1: tsc: not found`
+  - Netlify skipped devDependencies because NODE_ENV=production. Fixed by setting `NPM_CONFIG_PRODUCTION=false` in `netlify.toml` (already included) or Site settings → Environment variables.
+  - Alternatively, remove any forced NODE_ENV=production during build.
 
 ### Deploy to Vercel
 1. Import the repo into Vercel
