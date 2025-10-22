@@ -42,5 +42,5 @@ All notable changes to this project will be documented in this file.
 - Applied a light-mode gradient background sitewide
 - Added `ShowcaseSlider` with automatic marquee animation and placeholder images under `public/showcase`
 - Implemented a modern snackbar system: split `snackbar-context`, `snackbar-provider`, and `use-toast`; wired CTA to show success/error/info toasts
-- Restyled CTA form into a modern gradient-bordered card while preserving all submission logic and Netlify/Formspree compatibility
+- Restyled CTA using the provided PrebuiltUI layout while preserving all submission logic and Netlify/Formspree compatibility
 - Updated README to reflect new features

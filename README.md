@@ -103,8 +103,11 @@ Included UI/animation components:
   - Example: the `Hero` section is wrapped with `AuroraBackground`
   - Demo: `src/components/ui/aurora-background.demo.tsx`
 
-// Splash cursor (optional, removed by default): `src/components/ui/splash-cursor.tsx`
-// If you want it back, render it once near the app root. Props: `colorClass`, `radius`.
+- Prebuilt CTA form layout: `src/components/ui/form-1.tsx`
+  - Demo: `src/components/ui/form-1.demo.tsx`
+  - Accepts controlled props so the main CTA can reuse the markup while keeping Netlify/Formspree logic
+- Splash cursor (optional, removed by default): `src/components/ui/splash-cursor.tsx`
+  - If you want it back, render it once near the app root. Props: `colorClass`, `radius`.
 
 Notes
 - No inline scripts; effects are CSS/framer-motion based and CSP-friendly
