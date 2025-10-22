@@ -24,38 +24,52 @@ export function CTASection() {
       return
     }
 
-    if (action) {
-      try {
-        setStatus('submitting')
+    setStatus('submitting')
+
+    try {
+      if (action) {
+        // Formspree JSON endpoint
         const res = await fetch(action, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
           body: JSON.stringify({ email, name: cleanName, message: cleanMsg })
         })
-        if (res.ok) {
-          setStatus('success')
-          setEmail('')
-          setName('')
-          setMessage('')
-        } else {
-          setStatus('error')
+        if (!res.ok) throw new Error('Formspree failed')
+      } else {
+        // Netlify Forms: URL-encoded POST to root
+        const formBody = new URLSearchParams()
+        formBody.append('form-name', 'lead')
+        formBody.append('name', cleanName)
+        formBody.append('email', email)
+        formBody.append('message', cleanMsg)
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formBody.toString()
+        })
+        if (!(res.ok || (res.status >= 200 && res.status < 400))) {
+          throw new Error('Netlify submission failed')
         }
-      } catch {
-        setStatus('error')
       }
-    } else {
-      // Netlify forms will handle submission if hosted on Netlify
-      setStatus('submitting')
-      setTimeout(() => setStatus('success'), 500)
+
+      setStatus('success')
+      setEmail('')
+      setName('')
+      setMessage('')
+    } catch {
+      setStatus('error')
     }
   }
 
   return (
-    <section id="cta" className="bg-white">
+    <section id="cta" className="bg-white dark:bg-gray-900">
       <div className="container-responsive py-16 sm:py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold text-gray-900">Ready to capture leads?</h2>
-          <p className="mt-2 text-gray-700">Sign up to receive a demo and onboarding resources.</p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Ready to capture leads?</h2>
+          <p className="mt-2 text-gray-700 dark:text-gray-300">Sign up to receive a demo and onboarding resources.</p>
         </div>
         <form
           onSubmit={onSubmit}
@@ -74,7 +88,7 @@ export function CTASection() {
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
               <input
                 id="name"
                 name="name"
@@ -82,12 +96,12 @@ export function CTASection() {
                 autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
                 placeholder="Jane Doe"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
               <input
                 id="email"
                 name="email"
@@ -96,20 +110,20 @@ export function CTASection() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+                className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
                 placeholder="you@example.com"
               />
             </div>
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
             <textarea
               id="message"
               name="message"
               rows={4}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+              className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
               placeholder="Tell us a bit about your needs..."
             />
           </div>
@@ -120,6 +134,12 @@ export function CTASection() {
             {status === 'success' && <span className="text-green-600">Thanks! We’ll be in touch.</span>}
             {status === 'error' && <span className="text-red-600">Check your details and try again.</span>}
           </div>
+          {import.meta.env.DEV && !action && (
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Note: Netlify Forms submissions are processed on deployed sites. In local dev, use Formspree
+              by setting VITE_FORMSPREE_ENDPOINT.
+            </p>
+          )}
         </form>
       </div>
     </section>

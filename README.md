@@ -79,6 +79,7 @@ components.json         # shadcn/ui config (paths, tailwind)
 
 ## Forms (Lead Capture)
 - Netlify Forms (default): The CTA form includes proper attributes and a hidden detection form in `index.html`. On Netlify, submissions appear in the Netlify dashboard.
+  - To receive emails, enable form submission notifications in your Netlify site’s Forms settings or configure an outgoing email integration (e.g., Zapier/Make).
 - Formspree: Set `VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/XXXXXX` in `.env`. The CTA will POST directly to Formspree.
 - Serverless integrations (optional): Use Netlify Functions (`netlify/functions/subscribe-*.ts`) to connect Mailchimp or ConvertKit without exposing API keys.
 
