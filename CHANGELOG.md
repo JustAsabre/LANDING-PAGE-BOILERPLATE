@@ -23,3 +23,10 @@ All notable changes to this project will be documented in this file.
 - Expanded README with detailed setup, scripts, security, integrations, and deployment guides
 - Added Netlify Function stubs for Mailchimp and ConvertKit (optional)
 - Extended .env.example with server-side variables for serverless integrations
+
+## 0.1.4 - 2025-10-22
+- Added shadcn-compatible structure via `components.json` and `src/components/ui`
+- New UI/animations: `AuroraBackground` and `SplashCursor` with demos
+- Integrated Aurora background into `Hero` and Splash cursor at app root
+- Added `src/lib/utils.ts` with `cn` helper
+- Updated README with usage and structure details

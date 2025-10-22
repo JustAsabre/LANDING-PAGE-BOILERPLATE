@@ -12,6 +12,7 @@ A secure, modern landing page boilerplate using React, Vite, TypeScript, and Tai
 - GA4 loader (env-driven, no inline scripts)
 - Security headers (Netlify/Vercel), CSP, HSTS
 - ESLint (flat config), Prettier, Vitest + React Testing Library
+- Shadcn-compatible structure and modern animations (Aurora background, Splash cursor)
 
 ## Prerequisites
 - Node.js 18+ and npm
@@ -59,12 +60,14 @@ npm run build
 ```
 src/
   components/           # UI components (Header, Hero, Benefits, CTASection, Footer, Button)
-  lib/                  # Utilities (ga.ts, validation.ts)
+  components/ui/        # Shadcn-style UI components (aurora-background, splash-cursor, ...)
+  lib/                  # Utilities (ga.ts, validation.ts, utils.ts)
   index.css             # Tailwind layers + global styles
   main.tsx, App.tsx
 netlify/
   functions/            # Optional serverless functions (Mailchimp, ConvertKit)
 public/                 # Static assets (favicon, robots.txt)
+components.json         # shadcn/ui config (paths, tailwind)
 ```
 
 ## Security Practices
@@ -82,6 +85,30 @@ public/                 # Static assets (favicon, robots.txt)
 ## GA4
 - Set `VITE_GA_MEASUREMENT_ID` to enable analytics
 - Loaded programmatically in `src/lib/ga.ts` to avoid inline scripts and match CSP
+
+## Shadcn-style structure and animations
+
+This project is set up with a shadcn-compatible folder layout and config:
+
+- `components.json` defines aliases and Tailwind config paths
+- UI components live in `src/components/ui`
+- Utility `cn` helper is in `src/lib/utils.ts`
+
+Included UI/animation components:
+
+- Aurora background: `src/components/ui/aurora-background.tsx`
+  - Usage: wrap any section to add soft animated gradient blobs
+  - Example: the `Hero` section is wrapped with `AuroraBackground`
+  - Demo: `src/components/ui/aurora-background.demo.tsx`
+
+- Splash cursor: `src/components/ui/splash-cursor.tsx`
+  - Usage: place once near the app root for a subtle glow following the cursor
+  - Example: rendered in `src/App.tsx`
+  - Props: `colorClass` (Tailwind gradient start, default `from-brand-400/40`), `radius` in px
+
+Notes
+- No inline scripts; effects are CSS/framer-motion based and CSP-friendly
+- You can add more components from 21st.dev or shadcn/ui using the same structure
 
 ## Deploy
 

@@ -3,7 +3,7 @@ export function Header() {
     <header className="border-b border-gray-200">
       <div className="container-responsive flex items-center justify-between py-4">
         <a href="#" className="text-xl font-bold text-brand-700" aria-label="Home">
-          YourBrand
+          RichyTech.inc
         </a>
         <nav aria-label="Primary">
           <ul className="flex gap-6 text-sm text-gray-700">
