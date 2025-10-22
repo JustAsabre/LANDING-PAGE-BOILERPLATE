@@ -30,3 +30,17 @@ All notable changes to this project will be documented in this file.
 - Integrated Aurora background into `Hero` and Splash cursor at app root
 - Added `src/lib/utils.ts` with `cn` helper
 - Updated README with usage and structure details
+
+## 0.1.5 - 2025-10-22
+- Removed Splash cursor and added a dark mode toggle (class-based)
+- Converted CTA to native Netlify Forms submission with `/thanks` redirect; preserved Formspree path when configured
+- Added `public/thanks.html` confirmation page
+- Fixed tests by mocking `matchMedia` in `vitest.setup.ts` and guarding in `ThemeToggle`
+- Ensured build passes and deployment succeeds on Netlify
+
+## 0.1.6 - 2025-10-22
+- Applied a light-mode gradient background sitewide
+- Added `ShowcaseSlider` with automatic marquee animation and placeholder images under `public/showcase`
+- Implemented a modern snackbar system: split `snackbar-context`, `snackbar-provider`, and `use-toast`; wired CTA to show success/error/info toasts
+- Restyled CTA form into a modern gradient-bordered card while preserving all submission logic and Netlify/Formspree compatibility
+- Updated README to reflect new features

@@ -7,12 +7,13 @@ A secure, modern landing page boilerplate using React, Vite, TypeScript, and Tai
 ## Features
 - React 18 + Vite + TypeScript
 - Tailwind CSS; reusable Button component; mobile-first layout
-- Sections: Header, Hero, Benefits x3, CTA form, Footer
+- Sections: Header, Hero, Benefits x3, Showcase Slider, CTA form, Footer
 - Lead capture: Netlify Forms (default) or Formspree via env
+- Snackbar toasts on form submit (success/error/info)
 - GA4 loader (env-driven, no inline scripts)
 - Security headers (Netlify/Vercel), CSP, HSTS
 - ESLint (flat config), Prettier, Vitest + React Testing Library
-- Shadcn-compatible structure and modern animations (Aurora background, Splash cursor)
+- Shadcn-compatible structure and modern animations (Aurora background)
 
 ## Prerequisites
 - Node.js 18+ and npm
@@ -66,7 +67,7 @@ src/
   main.tsx, App.tsx
 netlify/
   functions/            # Optional serverless functions (Mailchimp, ConvertKit)
-public/                 # Static assets (favicon, robots.txt)
+public/                 # Static assets (favicon, robots.txt, showcase images)
 components.json         # shadcn/ui config (paths, tailwind)
 ```
 
@@ -102,10 +103,8 @@ Included UI/animation components:
   - Example: the `Hero` section is wrapped with `AuroraBackground`
   - Demo: `src/components/ui/aurora-background.demo.tsx`
 
-- Splash cursor: `src/components/ui/splash-cursor.tsx`
-  - Usage: place once near the app root for a subtle glow following the cursor
-  - Example: rendered in `src/App.tsx`
-  - Props: `colorClass` (Tailwind gradient start, default `from-brand-400/40`), `radius` in px
+// Splash cursor (optional, removed by default): `src/components/ui/splash-cursor.tsx`
+// If you want it back, render it once near the app root. Props: `colorClass`, `radius`.
 
 Notes
 - No inline scripts; effects are CSS/framer-motion based and CSP-friendly
