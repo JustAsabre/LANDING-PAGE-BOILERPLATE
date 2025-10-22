@@ -9,7 +9,8 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@/components/ui/theme-toggle': fileURLToPath(new URL('./src/components/ui/theme-toggle.tsx', import.meta.url))
       }
     },
     server: {

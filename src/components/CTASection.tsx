@@ -16,6 +16,12 @@ export function CTASection() {
   }, [])
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    // If we're using Netlify Forms (no Formspree action), allow native submit
+    if (!action) {
+      return
+    }
+
+    // Formspree path (AJAX)
     e.preventDefault()
     const cleanName = sanitizeString(name)
     const cleanMsg = sanitizeString(message)
@@ -27,33 +33,16 @@ export function CTASection() {
     setStatus('submitting')
 
     try {
-      if (action) {
-        // Formspree JSON endpoint
-        const res = await fetch(action, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-          },
-          body: JSON.stringify({ email, name: cleanName, message: cleanMsg })
-        })
-        if (!res.ok) throw new Error('Formspree failed')
-      } else {
-        // Netlify Forms: URL-encoded POST to root
-        const formBody = new URLSearchParams()
-        formBody.append('form-name', 'lead')
-        formBody.append('name', cleanName)
-        formBody.append('email', email)
-        formBody.append('message', cleanMsg)
-        const res = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formBody.toString()
-        })
-        if (!(res.ok || (res.status >= 200 && res.status < 400))) {
-          throw new Error('Netlify submission failed')
-        }
-      }
+      // Formspree JSON endpoint
+      const res = await fetch(action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({ email, name: cleanName, message: cleanMsg })
+      })
+      if (!res.ok) throw new Error('Formspree failed')
 
       setStatus('success')
       setEmail('')
@@ -75,7 +64,7 @@ export function CTASection() {
           onSubmit={onSubmit}
           name="lead"
           method={action ? 'POST' : 'POST'}
-          action={action}
+          action={action ?? '/thanks'}
           data-netlify={!action ? 'true' : undefined}
           data-netlify-honeypot="bot-field"
           className="mx-auto mt-8 max-w-xl space-y-4"

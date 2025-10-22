@@ -6,7 +6,9 @@ export function ThemeToggle() {
     if (typeof window === 'undefined') return 'light'
     const stored = localStorage.getItem('theme') as 'light' | 'dark' | null
     if (stored) return stored
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const prefersDark = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : false
     return prefersDark ? 'dark' : 'light'
   })
 
