@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '@/components/ui/theme-toggle': fileURLToPath(new URL('./src/components/ui/theme-toggle.tsx', import.meta.url))
-      }
+      },
+      extensions: ['.mjs', '.ts', '.tsx', '.js', '.jsx', '.json']
     },
     server: {
       port: 5173,
