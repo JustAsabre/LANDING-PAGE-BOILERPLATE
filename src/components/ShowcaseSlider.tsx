@@ -5,10 +5,10 @@ type ShowcaseItem = {
 
 const items: ShowcaseItem[] = [
   { src: '/showcase/landing-1.svg', alt: 'Landing page 1' },
-  { src: '/showcase/landing-2.svg', alt: 'Landing page 2' },
-  { src: '/showcase/landing-3.svg', alt: 'Landing page 3' },
-  { src: '/showcase/landing-4.svg', alt: 'Landing page 4' },
-  { src: '/showcase/landing-5.svg', alt: 'Landing page 5' }
+  { src: '/showcase/landing-2.png', alt: 'Landing page 2' },
+  { src: '/showcase/landing-3.png', alt: 'Landing page 3' },
+  { src: '/showcase/landing-4.png', alt: 'Landing page 4' },
+  { src: '/showcase/landing-5.png', alt: 'Landing page 5' }
 ]
 
 export function ShowcaseSlider() {

@@ -2,10 +2,10 @@
 
 const items = [
   '/showcase/landing-1.svg',
-  '/showcase/landing-2.svg',
-  '/showcase/landing-3.svg',
-  '/showcase/landing-4.svg',
-  '/showcase/landing-5.svg'
+  '/showcase/landing-2.png',
+  '/showcase/landing-3.png',
+  '/showcase/landing-4.png',
+  '/showcase/landing-5.png'
 ]
 
 function MiniMarquee({ speedClass, title }: { speedClass: string; title?: string }) {
