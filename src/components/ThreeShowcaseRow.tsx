@@ -1,7 +1,7 @@
 // standalone presentational component
 
 const items = [
-  '/showcase/landing-1.svg',
+  '/showcase/new landing.png',
   '/showcase/landing-2.png',
   '/showcase/landing-3.png',
   '/showcase/landing-4.png',

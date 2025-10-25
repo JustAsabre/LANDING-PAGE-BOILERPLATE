@@ -48,3 +48,4 @@ All notable changes to this project will be documented in this file.
 ## 0.1.7 - 2025-10-25
 - Restored CTA submission logic and toast-driven feedback while keeping the gradient shell intact
 - Applied the new gradient treatment to the benefits and recent landing pages sections without impacting the slider animation
+- Swapped the landing 1 showcase slot to the newly supplied "new landing" artwork
