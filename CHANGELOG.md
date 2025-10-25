@@ -44,3 +44,7 @@ All notable changes to this project will be documented in this file.
 - Implemented a modern snackbar system: split `snackbar-context`, `snackbar-provider`, and `use-toast`; wired CTA to show success/error/info toasts
 - Restyled CTA using the provided PrebuiltUI layout while preserving all submission logic and Netlify/Formspree compatibility
 - Updated README to reflect new features
+
+## 0.1.7 - 2025-10-25
+- Restored CTA submission logic and toast-driven feedback while keeping the gradient shell intact
+- Applied the new gradient treatment to the benefits and recent landing pages sections without impacting the slider animation
